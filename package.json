@@ -23,6 +23,7 @@
     "node-path": "^0.0.3",
     "node-util": "^0.0.1",
     "soundcloud-scraper": "^5.0.3",
+    "spotify-url-info": "^3.2.3",
     "ultrax": "^2.0.5",
     "youtube-sr": "^4.3.4",
     "ytdl-core": "^4.11.2"
