@@ -13,7 +13,6 @@ const {Routes} = require("discord-api-types/v10");
 const {Player} = require("discord-player");
 const { config } = require('dotenv');
 
-const {TOKEN} = require('./config.json')
 const client = new Client({ intents: [
 	GatewayIntentBits.Guilds,
 	GatewayIntentBits.GuildMembers,
