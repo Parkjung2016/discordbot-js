@@ -4,7 +4,7 @@ const { EmbedBuilder } = require('discord.js');
 module.exports = {
 data: new SlashCommandBuilder()
   .setName('마우봇음악리스트')
-  .setDescription('리스트에있는 10개의 음악들을 보여줍니다.')
+  .setDescription('리스트에 있는 10개의 음악들을 보여줍니다.')
   .addNumberOption((option)=>option.setName("페이지").setDescription("리스트의 페이지 수").setMinValue(1)),
  execute:async({client,interaction})=>{
 

@@ -1,13 +1,13 @@
 
-const { SlashCommandBuilder, ActionRowBuilder,StringSelectMenuBuilder,Client } = require('discord.js');
+const { SlashCommandBuilder, ActionRowBuilder,StringSelectMenuBuilder } = require('discord.js');
 
 module.exports = {
 	
   
 	data: new SlashCommandBuilder()
-		.setName('마우도움말')
+		.setName('마우봇도움말')
 		.setDescription('도움말을 보여줍니다'),
-	async execute(interaction) {
+		execute:async({interaction})=>{
 		const row = new ActionRowBuilder()
 		.addComponents(
 			new StringSelectMenuBuilder()
@@ -28,8 +28,8 @@ module.exports = {
 					},
 				),
 		);
-
-	await interaction.reply({ content: '종류를 선택하세요!', components:[row] });
+	await interaction.reply({ content: '종류를 선택하세요!', components:[row], ephemeral: true });
+	
 
 		// await interaction.reply({embeds:[new EmbedBuilder().setTitle("마우도움말").setDescription("마우봇의 명령어들을 확인해보세요!").addFields([{name:"/안녕 마우!",value:"마우에게 인사를 합니다."}])]});
 	},

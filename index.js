@@ -8,6 +8,7 @@ const jimp = require('jimp');
 const { isBuffer } = require('node:util');
 require("dotenv").config();
 
+const setting = require('./setting');
 const {REST} = require("@discordjs/rest");
 const {Routes} = require("discord-api-types/v10");
 const {Player} = require("discord-player");
@@ -61,6 +62,7 @@ client.on(Events.InteractionCreate, async interaction => {
 		
 	}
 });
+
 client.on(Events.InteractionCreate, async interaction => {
 
 	if(!interaction.isStringSelectMenu) return;
@@ -79,8 +81,16 @@ client.on(Events.InteractionCreate, async interaction => {
 					.setTitle("음악 관련 도움말")
 					.setDescription("음악관련 명령어들을 확인하세요!")
 					.addFields(
-						[{name:"/마우봇음악 검색",value:"키워드를 이용하여 음악을 재생합니다."}]
-						[{name:"/마우봇음악 플레이리스트",value:"유튜브에서 플레이리스트를 실행합니다."}]
+						[{name:"/마우봇음악 검색",value:"키워드를 이용하여 음악을 재생합니다."},
+						{name:"/마우봇음악 플레이리스트",value:"유튜브에서 플레이리스트를 실행합니다."},
+						{name:"/마우봇음악 url재생",value:"유튜브에서 url을 이용하여 음악을 재생합니다"},
+						{name:"/마우봇음악종료",value:"재생중인 음악을 종료합니다."},
+						{name:"/마우봇음악정보",value:"재생중인 음악의 정보를 확인합니다."},
+						{name:"/마우봇음악멈추기",value:"재생중인 음악을 멈춥니다."},
+						{name:"/마우봇음악리스트",value:"리스트에 있는 10개의 음악들을 보여줍니다."},
+						{name:"/마우봇음악재개",value:"현재 음악을 다시 재생합니다."},
+						{name:"/마우봇음악스킵",value:"재생중인 음악을 스킵합니다."},
+						]
 						)]
 					
 				});
@@ -113,13 +123,20 @@ if(interaction.commandName === '구름알려줘')
 if(interaction.commandName ==='테스트')
 {	
 	blur();
+	console.log(  setting.getWelcomeChannelId());
 	const bg = './assets/bg.png';
   const avatar = interaction.member.user.displayAvatarURL({ format: "png" });
   const title = "환영합니다!";
   const subtitle = interaction.member.user.tag;
   const footer = `${client.guilds.cache.get('1063805489051336744'). members.cache.filter(member=>!member.user.bot).size+1}번째 멤버이십니다.`;
   const color = '#65b5bd';
-  const channel =await interaction.member.guild.channels.fetch().then(channels=> channels.find(x=>x.name==='인사'));
+  const channel =await interaction.member.guild.channels.fetch().then(channels=> channels.find(x=>x.name===setting.getWelcomeChannelId()));
+	if(!channel)
+	{
+		await interaction.reply('올바른 채널이 아니에요!');
+		return;
+	}
+
   const options = {
     font: "Gungsuh",
     attachmentName: `welcome-${interaction.member.id}`,
@@ -179,9 +196,10 @@ client.on(Events.GuildMemberAdd, async member => {
   const avatar = member.user.displayAvatarURL({ format: "png" });
   const title = "환영합니다!";
   const subtitle = member.user.tag;
-  const footer = `${client.guilds.cache.get('1063805489051336744'). members.cache.filter(member=>!member.user.bot).size+1}번째 멤버이십니다.`;
+  const footer = `${client.guilds.cache.get(process.env.guildId ). members.cache.filter(member=>!member.user.bot).size+1}번째 멤버이십니다.`;
   const color = '#65b5bd';
-  const channel =await member.guild.channels.fetch().then(channels=> channels.find(x=>x.name==='인사'));
+	console.log(  setting.setWelcomeChannelId(channelID));
+  const channel =await member.guild.channels.fetch().then(channels=> channels.find(x=>x.name===setting.getWelcomeChannelId()));
   const options = {
     font: "Gungsuh",
     attachmentName: `welcome-${member.id}`,

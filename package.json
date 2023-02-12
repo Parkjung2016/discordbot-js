@@ -1,35 +1,72 @@
 {
+
   "name": "discordbot",
+
   "version": "1.0.0",
+
   "description": "",
+
   "main": "index.js",
+
   "scripts": {
-    "start": "node index.js",
-    "dev": "nodemon index.js",
+
+    "start": "nodemon index.js",
+
+    "deploy": "nodemon deploy-commands",
+
+    "dev": "concurrently \"npm run start\"  \"npm run deploy\"",
+
     "test": "echo \"Error: no test specified\" && exit 1"
+
   },
+
   "author": "KYEONGMIN CHO <ggingmin@gmail.com>",
+
   "license": "ISC",
+
   "dependencies": {
+
     "@discordjs/rest": "^1.5.0",
+
     "canvas": "^2.11.0",
-    "concurrently": "^7.6.0",
+
     "discord-api-types": "^0.37.33",
+
     "discord-player": "^5.4.0",
+
     "discord.js": "^14.7.1",
+
     "dotenv": "^16.0.1",
+
+    "ffmpeg": "^0.0.4",
+
     "jimp": "^0.22.4",
+
     "node": "^19.6.0",
+
     "node-fs": "^0.1.7",
+
     "node-path": "^0.0.3",
+
     "node-util": "^0.0.1",
+
     "soundcloud-scraper": "^5.0.3",
+
     "spotify-url-info": "^3.2.3",
+
     "ultrax": "^2.0.5",
+
     "youtube-sr": "^4.3.4",
+
     "ytdl-core": "^4.11.2"
+
   },
+
   "devDependencies": {
+
     "nodemon": "^2.0.19"
+
   }
+
 }
+

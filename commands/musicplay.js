@@ -31,7 +31,7 @@ data: new SlashCommandBuilder()
   .addSubcommand(subCommand=>
     subCommand
     .setName("url재생")
-    .setDescription("유튜브에서 url을 이용하여 음악을 재생합니다")
+    .setDescription("유튜브에서 url을 이용하여 음악을 재생합니다.")
     .addStringOption(option=>
       option
       .setName("url")
