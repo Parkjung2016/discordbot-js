@@ -20,7 +20,10 @@
     "jimp": "^0.22.4",
     "node": "^19.6.0",
     "node-fs": "^0.1.7",
-    "ultrax": "^2.0.5"
+    "node-path": "^0.0.3",
+    "node-util": "^0.0.1",
+    "ultrax": "^2.0.5",
+    "ytdl-core": "^4.11.2"
   },
   "devDependencies": {
     "nodemon": "^2.0.19"
