@@ -2,12 +2,12 @@ const fs = require('node:fs');
 const path = require('node:path');
 const { EmbedBuilder } = require('@discordjs/builders');
 const { Client,ComponentType,Collection, Events, GatewayIntentBits, MessageCollector} = require('discord.js');
-const { Canvas} = require('canvas');
+const {registerFont, Canvas} = require('canvas');
 const { welcomeImage } = require('ultrax');
 const jimp = require('jimp');
 const { isBuffer } = require('node:util');
 require("dotenv").config();
-
+registerFont('HEIROFLIGHTREGULAR.ttf',{family:'HEIROFLIGHTREGULAR'})
 const setting = require('./setting');
 const {REST} = require("@discordjs/rest");
 const {Routes} = require("discord-api-types/v10");
@@ -201,7 +201,7 @@ client.on(Events.GuildMemberAdd, async member => {
 	console.log(  setting.setWelcomeChannelId(channelID));
   const channel =await member.guild.channels.fetch().then(channels=> channels.find(x=>x.name===setting.getWelcomeChannelId()));
   const options = {
-    font: "Gungsuh",
+    font: 'HEIROFLIGHTREGULAR',
     attachmentName: `welcome-${member.id}`,
     title_fontSize: 80,
     subtitle_fontSize: 50,
