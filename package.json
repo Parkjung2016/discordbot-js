@@ -10,9 +10,9 @@
 
   "scripts": {
 
-    "start": "nodemon index.js",
+    "start": "node index.js",
 
-    "deploy": "nodemon deploy-commands",
+    "deploy": "node deploy-commands",
 
     "startdev": "concurrently \"npm run start\"  \"npm run deploy\"",
 
